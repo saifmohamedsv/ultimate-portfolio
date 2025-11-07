@@ -72,7 +72,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 dark:text-white"
+          className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 dark:text-white"
         >
           {DATA.name}
         </motion.h1>
@@ -142,8 +142,18 @@ export function Hero() {
             className="flex flex-col items-center gap-2 text-neutral-500 dark:text-neutral-400"
           >
             <p className="text-xs sm:text-sm">Scroll Down</p>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
             </svg>
           </motion.div>
         </motion.div>

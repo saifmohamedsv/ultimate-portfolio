@@ -1,6 +1,15 @@
 import { cn } from "@/lib/utils";
 import { IconLayoutNavbarCollapse, IconHome } from "@tabler/icons-react";
-import { AnimatePresence, MotionValue, motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import {
+  AnimatePresence,
+  MotionValue,
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useScroll,
+  useMotionValueEvent,
+} from "motion/react";
 import type { TablerIcon } from "@tabler/icons-react";
 
 import { useRef, useState } from "react";
@@ -30,11 +39,43 @@ const FloatingDockMobile = ({
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const [visible, setVisible] = useState<boolean>(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 100) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  });
+
   return (
-    <div className={cn("relative hidden", className)}>
+    <motion.div
+      animate={{
+        backdropFilter: visible ? "blur(10px)" : "none",
+        boxShadow: visible
+          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          : "none",
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 200,
+        damping: 50,
+      }}
+      className={cn(
+        "relative hidden rounded-full p-2 bg-transparent",
+        visible && "bg-white/80 dark:bg-neutral-950/80",
+        !visible && "bg-gray-50 dark:bg-neutral-800",
+        className
+      )}
+    >
       <AnimatePresence>
         {open && (
-          <motion.div layoutId="nav" className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2">
+          <motion.div
+            layoutId="nav"
+            className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
+          >
             {items.map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -68,11 +109,11 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800"
+        className="flex h-10 w-10 items-center justify-center rounded-full bg-transparent"
       >
         <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
       </button>
-    </div>
+    </motion.div>
   );
 };
 
@@ -84,19 +125,54 @@ const FloatingDockDesktop = ({
   className?: string;
 }) => {
   const mouseX = useMotionValue(Infinity);
+  const { scrollY } = useScroll();
+  const [visible, setVisible] = useState<boolean>(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 100) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  });
+
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
+      animate={{
+        backdropFilter: visible ? "blur(10px)" : "none",
+        boxShadow: visible
+          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          : "none",
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 200,
+        damping: 50,
+      }}
       className={cn(
-        "mx-auto  h-16 items-end w-fit gap-4 rounded-2xl bg-gray-50 px-4 py-3 flex dark:bg-neutral-900",
+        "mx-auto h-16 items-end w-fit gap-4 rounded-2xl px-4 py-3 flex bg-transparent",
+        visible && "bg-white/80 dark:bg-neutral-950/80",
+        !visible && "bg-gray-50 dark:bg-neutral-900",
         className
       )}
     >
-      <IconContainer mouseX={mouseX} key={"Home"} Icon={IconHome} title="Home" href="/" />
+      <IconContainer
+        mouseX={mouseX}
+        key={"Home"}
+        Icon={IconHome}
+        title="Home"
+        href="/"
+      />
       <div className="h-full w-px bg-gray-200 dark:bg-neutral-800" />
       {items.map((item) => (
-        <IconContainer mouseX={mouseX} key={item.title} Icon={item.icon} {...item} />
+        <IconContainer
+          mouseX={mouseX}
+          key={item.title}
+          Icon={item.icon}
+          {...item}
+        />
       ))}
     </motion.div>
   );
@@ -124,8 +200,16 @@ function IconContainer({
   const widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
   const heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
 
-  const widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
-  const heightTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
+  const widthTransformIcon = useTransform(
+    distance,
+    [-150, 0, 150],
+    [20, 40, 20]
+  );
+  const heightTransformIcon = useTransform(
+    distance,
+    [-150, 0, 150],
+    [20, 40, 20]
+  );
 
   const width = useSpring(widthTransform, {
     mass: 0.1,
@@ -172,7 +256,10 @@ function IconContainer({
             </motion.div>
           )}
         </AnimatePresence>
-        <motion.div style={{ width: widthIcon, height: heightIcon }} className="flex items-center justify-center">
+        <motion.div
+          style={{ width: widthIcon, height: heightIcon }}
+          className="flex items-center justify-center"
+        >
           <Icon className="h-full w-full text-neutral-500 dark:text-neutral-300 size-4" />
         </motion.div>
       </motion.div>

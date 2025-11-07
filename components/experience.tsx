@@ -59,12 +59,17 @@ export function Experience() {
   });
 
   return (
-    <div className="container relative w-full overflow-clip">
-      <Timeline
-        data={data}
-        title="Work Experience"
-        description="A timeline of my professional journey and the companies I've worked with."
-      />
+    <div id="experience" className="container relative w-full overflow-clip">
+      <div className="py-4">
+        <h1 className="font-bold text-2xl md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
+          Work Experience
+        </h1>
+        <p className="text-neutral-700 dark:text-neutral-300 text-sm max-w-sm">
+          A timeline of my professional journey and the companies I&apos;ve
+          worked with.
+        </p>
+      </div>
+      <Timeline data={data} />
     </div>
   );
 }

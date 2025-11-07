@@ -7,15 +7,7 @@ interface TimelineEntry {
   content: React.ReactNode;
 }
 
-export const Timeline = ({
-  data,
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-  data: TimelineEntry[];
-}) => {
+export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -36,12 +28,10 @@ export const Timeline = ({
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div className="container w-full bg-white dark:bg-neutral-950 font-sans md:px-10" ref={containerRef}>
-      <div className="py-4">
-        <h2 className="text-2xl md:text-4xl mb-4 text-black dark:text-white max-w-4xl">{title}</h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-base max-w-sm">{description}</p>
-      </div>
-
+    <div
+      className="container w-full bg-white dark:bg-neutral-950 font-sans md:px-10"
+      ref={containerRef}
+    >
       <div ref={ref} className="relative pb-20">
         {data.map((item, index) => (
           <div key={index} className="flex justify-start pt-6 md:pt-10">
