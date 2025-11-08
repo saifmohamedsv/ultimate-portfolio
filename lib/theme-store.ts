@@ -22,7 +22,7 @@ const applyTheme = (theme: Theme) => {
 export const useThemeStore = create<ThemeStore>()(
   persist(
     (set) => ({
-      theme: "light",
+      theme: "dark",
       toggle: () =>
         set((state) => {
           const newTheme = state.theme === "light" ? "dark" : "light";
@@ -44,4 +44,3 @@ export const useThemeStore = create<ThemeStore>()(
     }
   )
 );
-
