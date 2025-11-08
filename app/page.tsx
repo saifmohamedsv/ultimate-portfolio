@@ -1,6 +1,7 @@
-import { Experience } from "@/components/experience";
-import { Hero } from "@/components/hero";
-import { Testimonials } from "@/components/testimonials";
+import ContactSection from "@/components/pages/home/contact";
+import { Experience } from "@/components/pages/home/experience";
+import { Hero } from "@/components/pages/home/hero";
+import { Testimonials } from "@/components/pages/home/testimonials";
 
 export default function Home() {
   return (
@@ -11,8 +12,8 @@ export default function Home() {
       <Experience />
       {/* Testimonials */}
       <Testimonials />
-
       {/* Contact */}
+      <ContactSection />
     </div>
   );
 }
