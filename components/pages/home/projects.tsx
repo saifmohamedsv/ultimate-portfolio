@@ -48,7 +48,7 @@ export function ProjectsPreview() {
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
                 {project.active && (
-                  <span className="absolute left-3 top-3 rounded-full bg-emerald-600/90 px-2.5 py-1 text-xs font-medium text-white shadow-sm">
+                  <span className="absolute left-3 top-3 rounded-full bg-primary/80 px-2.5 py-1 text-xs font-medium text-white shadow-sm">
                     Live
                   </span>
                 )}
@@ -66,29 +66,40 @@ export function ProjectsPreview() {
                       {project.title}
                     </h3>
                     <div className="mt-1 flex flex-wrap items-center gap-2">
-                      {project.href && (
-                        <Link
-                          href={project.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-primary/80 hover:text-primary underline underline-offset-4"
-                        >
-                          Visit project
-                        </Link>
-                      )}
-                      {repoLink && (
-                        <Link
-                          href={repoLink.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200/80 bg-white/80 px-2.5 py-1 text-[11px] font-medium text-neutral-800 hover:border-primary/60 hover:text-primary dark:border-neutral-800 dark:bg-neutral-900/80 dark:text-neutral-200"
-                        >
-                          <span className="inline-flex items-center justify-center">
-                            {repoLink.icon}
-                          </span>
-                          <span>GitHub repo</span>
-                        </Link>
-                      )}
+                      {project.links?.length ? (
+                        <div className="mt-2 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm text-neutral-700 dark:text-neutral-300">
+                          <div className="flex flex-wrap gap-2">
+                            {project.links.map((link) => (
+                              <Link
+                                key={`${project.title}-${link.type}`}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200/70 bg-white/80 px-3 py-1 text-[11px] font-medium text-neutral-800 hover:border-primary/60 hover:text-primary dark:border-neutral-800 dark:bg-neutral-900/80 dark:text-neutral-200"
+                              >
+                                <span className="inline-flex items-center justify-center">
+                                  {link.icon}
+                                </span>
+                                <span>{link.type}</span>
+                              </Link>
+                            ))}
+                          </div>
+
+                          {repoLink && (
+                            <Link
+                              href={repoLink.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200/80 bg-neutral-900 px-3 py-1 text-[11px] font-medium text-white hover:bg-primary hover:border-primary/70 dark:bg-white dark:text-neutral-900 dark:hover:bg-primary dark:hover:text-white"
+                            >
+                              <span className="inline-flex items-center justify-center">
+                                {repoLink.icon}
+                              </span>
+                              <span>GitHub repo</span>
+                            </Link>
+                          )}
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
