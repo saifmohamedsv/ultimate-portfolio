@@ -50,14 +50,14 @@ export function Hero() {
   }, [typewriterLines.length]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 py-16">
-      <div className="md:mt-0 mt-12 grid w-full max-w-6xl gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] items-center">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 py-12 sm:py-16">
+      <div className="md:mt-0 mt-10 grid w-full max-w-6xl gap-8 sm:gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] items-center">
         {/* Copy */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="space-y-6 text-left"
+          className="space-y-4 sm:space-y-6 text-left"
         >
           {/* Greeting */}
           <motion.p
@@ -84,7 +84,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="min-h-[80px] sm:min-h-[100px] md:min-h-[120px] flex items-center justify-start"
+            className="min-h-[60px] sm:min-h-[100px] md:min-h-[120px] flex items-center justify-start"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -136,7 +136,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.5 }}
-            className="pt-8"
+            className="pt-6 sm:pt-8"
           >
             <motion.div
               animate={{ y: [0, 10, 0] }}
@@ -193,12 +193,12 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="absolute top-6 left-6 rounded-2xl bg-white/80 dark:bg-black/60 backdrop-blur-xl border border-black/5 dark:border-white/5 px-4 py-3 text-xs sm:text-sm font-medium shadow-lg flex flex-col gap-1"
+              className="absolute top-6 left-6 max-sm:top-auto max-sm:bottom-3 max-sm:left-auto max-sm:right-3 rounded-2xl bg-white/80 dark:bg-black/60 backdrop-blur-xl border border-black/5 dark:border-white/5 px-4 py-3 max-sm:px-2.5 max-sm:py-1.5 text-xs sm:text-sm font-medium shadow-lg flex flex-col gap-1 max-sm:gap-0.5"
             >
-              <span className="text-neutral-500 dark:text-neutral-400">
+              <span className="text-neutral-500 dark:text-neutral-400 text-[11px] sm:text-xs">
                 Currently crafting
               </span>
-              <span className="text-neutral-900 dark:text-white text-base">
+              <span className="text-neutral-900 dark:text-white text-sm sm:text-base">
                 Frontend experiences
               </span>
             </motion.div>
@@ -207,12 +207,14 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
-              className="absolute bottom-6 right-6 rounded-2xl bg-blue-500/90 text-white px-4 py-3 shadow-2xl"
+              className="absolute bottom-6 right-6 max-sm:bottom-auto max-sm:top-3 max-sm:right-auto max-sm:left-3 rounded-2xl bg-blue-500/90 text-white px-4 py-3 max-sm:px-2.5 max-sm:py-1.5 shadow-2xl"
             >
-              <p className="text-xs uppercase tracking-wide opacity-80">
+              <p className="text-xs sm:text-sm uppercase tracking-wide opacity-80 max-sm:text-[11px]">
                 Experience
               </p>
-              <p className="text-2xl font-semibold leading-tight">5+ yrs</p>
+              <p className="text-lg sm:text-2xl font-semibold leading-tight">
+                5+ yrs
+              </p>
             </motion.div>
           </div>
         </motion.div>
