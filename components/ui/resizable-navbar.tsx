@@ -238,7 +238,7 @@ export const NavbarLogo = () => {
     >
       <div className="flex md:h-12 md:w-12 h-8 w-8 items-center justify-center rounded-2xl overflow-hidden bg-transparent">
         <Image
-          src="/logo.png"
+          src="/logo.svg"
           alt="logo"
           width={64}
           height={64}
