@@ -234,15 +234,18 @@ export const NavbarLogo = () => {
   return (
     <a
       href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
+      className="relative z-20 mr-4 flex items-center text-sm font-normal text-black"
     >
-      <Image
-        src="https://assets.aceternity.com/logo-dark.png"
-        alt="logo"
-        width={30}
-        height={30}
-      />
-      <span className="font-medium text-black dark:text-white">SWEverse</span>
+      <div className="flex h-12 w-12 items-center justify-center">
+        <Image
+          src="/logo.png"
+          alt="logo"
+          width={64}
+          height={64}
+          className="object-cover"
+        />
+      </div>
+      <span className="font-black text-black dark:text-white">SWEverse</span>
     </a>
   );
 };
