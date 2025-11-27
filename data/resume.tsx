@@ -427,8 +427,15 @@ export const DATA = {
       quote:
         "Such a professional & dedicated person, comes before this he is a helpful person that will be an addition to any workspace.",
       name: "Ahmed Medhat",
-      designation: "Software Engineer at",
+      designation: "Software Engineer",
       src: "https://plus.unsplash.com/premium_photo-1739376473691-cdc1db244ac6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    },
+    {
+      quote:
+        "Saif was an outstanding mentor and team leader in our graduation project. He guided us with clarity, patience, and strong technical skills. Truly one of the best people I’ve worked with.",
+      name: "Menna Nader",
+      designation: "Frontend Developer",
+      src: "https://plus.unsplash.com/premium_photo-1739178656537-ea88ababab9b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074",
     },
   ] as Testimonial[],
 } as const;

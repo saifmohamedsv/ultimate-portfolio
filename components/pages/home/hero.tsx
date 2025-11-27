@@ -13,27 +13,27 @@ export function Hero() {
       { text: "I'm", className: "text-neutral-600 dark:text-neutral-400" },
       { text: "a", className: "text-neutral-600 dark:text-neutral-400" },
       { text: "Software", className: "text-neutral-900 dark:text-white" },
-      { text: "Engineer", className: "text-blue-500 dark:text-blue-500" },
+      { text: "Engineer", className: "text-primary dark:text-primary" },
     ],
     [
       { text: "I", className: "text-neutral-600 dark:text-neutral-400" },
       { text: "build", className: "text-neutral-900 dark:text-white" },
       { text: "web", className: "text-neutral-900 dark:text-white" },
-      { text: "applications", className: "text-blue-500 dark:text-blue-500" },
+      { text: "applications", className: "text-primary dark:text-primary" },
     ],
     [
       { text: "I", className: "text-neutral-600 dark:text-neutral-400" },
       { text: "love", className: "text-neutral-900 dark:text-white" },
-      { text: "helping", className: "text-blue-500 dark:text-blue-500" },
+      { text: "helping", className: "text-primary dark:text-primary" },
       { text: "people", className: "text-neutral-900 dark:text-white" },
-      { text: "learn", className: "text-blue-500 dark:text-blue-500" },
+      { text: "learn", className: "text-primary dark:text-primary" },
     ],
     [
       { text: "I'm", className: "text-neutral-600 dark:text-neutral-400" },
       { text: "very", className: "text-neutral-900 dark:text-white" },
-      { text: "active", className: "text-blue-500 dark:text-blue-500" },
+      { text: "active", className: "text-primary dark:text-primary" },
       { text: "on", className: "text-neutral-900 dark:text-white" },
-      { text: "LinkedIn", className: "text-blue-500 dark:text-blue-500" },
+      { text: "LinkedIn", className: "text-primary dark:text-primary" },
     ],
   ];
 
@@ -97,7 +97,7 @@ export function Hero() {
                 <TypewriterEffectSmooth
                   words={typewriterLines[currentLineIndex]}
                   className="justify-start"
-                  cursorClassName="bg-blue-500"
+                  cursorClassName="bg-primary"
                 />
               </motion.div>
             </AnimatePresence>
@@ -115,7 +115,7 @@ export function Hero() {
               href={DATA.locationLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm sm:text-base hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+              className="text-sm sm:text-base hover:text-primary dark:hover:text-primary transition-colors"
             >
               {DATA.location}
             </Link>
@@ -169,7 +169,7 @@ export function Hero() {
           className="relative w-full max-w-sm mx-auto lg:max-w-md lg:min-w-[320px]"
         >
           <div
-            className="absolute -inset-6 bg-linear-to-tr from-blue-500/20 via-teal-400/10 to-transparent blur-3xl opacity-70 dark:opacity-60"
+            className="absolute -inset-6 bg-linear-to-tr from-primary/20 via-teal-400/10 to-transparent blur-3xl opacity-70 dark:opacity-60"
             aria-hidden="true"
           />
 
@@ -207,7 +207,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
-              className="absolute bottom-6 right-6 max-sm:bottom-auto max-sm:top-3 max-sm:right-auto max-sm:left-3 rounded-2xl bg-blue-500/90 text-white px-4 py-3 max-sm:px-2.5 max-sm:py-1.5 shadow-2xl"
+              className="absolute bottom-6 right-6 max-sm:bottom-auto max-sm:top-3 max-sm:right-auto max-sm:left-3 rounded-2xl bg-primary/90 text-white px-4 py-3 max-sm:px-2.5 max-sm:py-1.5 shadow-2xl"
             >
               <p className="text-xs sm:text-sm uppercase tracking-wide opacity-80 max-sm:text-[11px]">
                 Experience

@@ -11,7 +11,6 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
-import { ButtonConnect } from "./shared/button-connect";
 
 export function Navigation() {
   const navItems = [
@@ -39,7 +38,13 @@ export function Navigation() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <ButtonConnect >Book a call</ButtonConnect>{" "}
+            <NavbarButton
+              onClick={() => setIsMobileMenuOpen(false)}
+              variant="primary"
+              className="w-full"
+            >
+              Book a call
+            </NavbarButton>
           </div>
         </NavBody>
 

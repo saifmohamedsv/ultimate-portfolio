@@ -36,7 +36,7 @@ export function Experience() {
                   href={work.href || "#"}
                   target={work.href ? "_blank" : undefined}
                   rel={work.href ? "noopener noreferrer" : undefined}
-                  className="text-sm md:text-lg font-semibold text-neutral-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+                  className="text-sm md:text-lg font-semibold text-neutral-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors"
                 >
                   {work.company}
                 </Link>
