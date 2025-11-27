@@ -51,7 +51,7 @@ export function Hero() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 py-16">
-      <div className="grid w-full max-w-6xl gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] items-center">
+      <div className="md:mt-0 mt-12 grid w-full max-w-6xl gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] items-center">
         {/* Copy */}
         <motion.div
           initial={{ opacity: 0 }}
