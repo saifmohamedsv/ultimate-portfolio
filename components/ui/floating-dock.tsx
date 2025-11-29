@@ -32,7 +32,7 @@ export const FloatingDock = ({
   return (
     <>
       <FloatingDockDesktop items={items} className={desktopClassName} />
-      {/* <FloatingDockMobile items={items} className={mobileClassName} /> */}
+      <FloatingDockMobile items={items} className={mobileClassName} />
     </>
   );
 };
@@ -64,7 +64,7 @@ const FloatingDockMobile = ({
         damping: 40,
       }}
       className={cn(
-        "fixed bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center rounded-full z-50 md:hidden",
+        "fixed bottom-4 right-2 -translate-x-1/2 flex items-center justify-center rounded-full border-2 z-50 md:hidden",
         visible
           ? "bg-white/70 dark:bg-neutral-950/70 backdrop-blur-md"
           : "bg-gray-50/90 dark:bg-neutral-900/90",
@@ -136,19 +136,19 @@ const FloatingDockDesktop = ({
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      // animate={{
-      //   backdropFilter: visible ? "blur(10px)" : "none",
-      //   boxShadow: visible
-      //     ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
-      //     : "none",
-      // }}
+      animate={{
+        backdropFilter: visible ? "blur(10px)" : "none",
+        boxShadow: visible
+          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          : "none",
+      }}
       transition={{
         type: "spring",
         stiffness: 200,
         damping: 50,
       }}
       className={cn(
-        "mx-auto h-16 border items-end w-fit gap-2 md:gap-4 rounded-2xl px-2 md:px-4 py-3 flex bg-transparent",
+        "hidden md:flex mx-auto h-16 border items-end w-fit gap-2 md:gap-4 rounded-2xl px-2 md:px-4 py-3 bg-transparent",
         visible && "bg-white/80 dark:bg-neutral-950/80",
         !visible && "bg-gray-50 dark:bg-neutral-900",
         className
