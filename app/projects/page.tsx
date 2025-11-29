@@ -14,9 +14,9 @@ export default function ProjectsPage() {
   const projects = DATA.projects;
 
   return (
-    <div className="min-h-screen w-full pt-8 pb-16">
+    <div className="min-h-screen w-full pt-8 pb-24">
       <section className="container">
-        <header className="max-w-3xl space-y-3 md:space-y-4 pt-4 md:pt-8">
+        <header className="max-w-3xl space-y-3 md:space-y-4 pt-10 md:pt-20">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-primary/80">
             Selected work
           </p>

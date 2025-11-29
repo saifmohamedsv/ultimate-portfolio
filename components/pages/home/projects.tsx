@@ -139,7 +139,7 @@ export function ProjectsPreview() {
         })}
       </div>
 
-      <div className="flex justify-center">
+      <div className="mt-10 flex justify-center">
         <ButtonConnect href="/projects">See all projects</ButtonConnect>
       </div>
     </section>
