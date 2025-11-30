@@ -161,7 +161,6 @@ const FloatingDockDesktop = ({
         title="Home"
         href="/"
       />
-      <div className="h-full w-px bg-gray-200 dark:bg-neutral-800" />
       {items.map((item) => (
         <IconContainer
           mouseX={mouseX}
