@@ -140,7 +140,11 @@ export function Hero() {
           >
             <motion.div
               animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="flex flex-col items-center md:items-start gap-2 text-neutral-500 dark:text-neutral-400"
             >
               <p className="text-xs sm:text-sm">Scroll Down</p>

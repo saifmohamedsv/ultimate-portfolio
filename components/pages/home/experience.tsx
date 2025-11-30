@@ -1,4 +1,3 @@
-import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { DATA } from "@/data/resume";
 import Image from "next/image";
@@ -58,7 +57,6 @@ export function Experience() {
       ),
     };
   }); // LEGACY
-
   return (
     <div id="experience" className="container relative w-full overflow-clip">
       <div className="py-4">
