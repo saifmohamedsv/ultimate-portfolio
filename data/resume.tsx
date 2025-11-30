@@ -110,7 +110,7 @@ export const DATA = {
         "Developed customer review and payout bank features using Next.js & GraphQL. Converted the dashboard into a PWA and added push notifications with Firebase. Wrote Jest tests for NestJS resolvers and enhanced the web app UI with new Figma designs.",
     },
     {
-      company: "ActivePieces",
+      company: "Active Pieces",
       href: "https://www.activepieces.com",
       badges: [],
       location: "Remote",
@@ -134,7 +134,7 @@ export const DATA = {
         "I worked on the ON-Ruf project at ADVERT LEAP and developed new features, enhanced the UI of certain dashboard parts, and implemented APIs using React.js, Redux, and CSS.",
     },
     {
-      company: "TAQNEEN",
+      company: "Taqneen",
       href: "https://dyafat.com",
       badges: [],
       location: "Remote",
@@ -146,7 +146,7 @@ export const DATA = {
         "Implemented hotel search and reservation features using plain JavaScript within a .NET app (Dyafat). Converted Figma designs into pixel-perfect UI and supported backend features with .NET.",
     },
     {
-      company: "LNKR",
+      company: "Lnkr",
       href: "",
       badges: [],
       location: "Remote",

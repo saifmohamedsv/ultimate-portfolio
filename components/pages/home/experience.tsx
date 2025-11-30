@@ -4,6 +4,7 @@ import { DATA } from "@/data/resume";
 import Image from "next/image";
 import Link from "next/link";
 import { IconMapPin } from "@tabler/icons-react";
+import WorkExperience from "@/components/work-experience";
 
 export function Experience() {
   const data = DATA.work.map((work) => {
@@ -56,7 +57,7 @@ export function Experience() {
         </div>
       ),
     };
-  });
+  }); // LEGACY
 
   return (
     <div id="experience" className="container relative w-full overflow-clip">
@@ -69,7 +70,8 @@ export function Experience() {
           worked with.
         </p>
       </div>
-      <Timeline data={data} />
+      <WorkExperience />
+      {/* <Timeline data={data} /> */}
     </div>
   );
 }

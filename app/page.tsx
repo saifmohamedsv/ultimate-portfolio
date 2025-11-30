@@ -3,6 +3,7 @@ import { Experience } from "@/components/pages/home/experience";
 import { Hero } from "@/components/pages/home/hero";
 import { Testimonials } from "@/components/pages/home/testimonials";
 import { ProjectsPreview } from "@/components/pages/home/projects";
+import WorkExperience from "@/components/work-experience";
 
 export default function Home() {
   return (
