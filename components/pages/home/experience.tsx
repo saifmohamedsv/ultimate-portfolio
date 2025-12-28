@@ -1,4 +1,3 @@
-import { Timeline } from "@/components/ui/timeline";
 import { DATA } from "@/data/resume";
 import Image from "next/image";
 import Link from "next/link";
