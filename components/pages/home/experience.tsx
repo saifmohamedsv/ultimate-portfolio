@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IconMapPin } from "@tabler/icons-react";
 import WorkExperience from "@/components/work-experience";
+import { SectionReveal } from "@/components/ui/section-reveal";
 
 interface ExperienceProps {
   data: ResumeData;
@@ -61,9 +62,10 @@ export function Experience({ data }: ExperienceProps) {
     };
   }); // LEGACY
   return (
-    <div id="experience" className="container relative w-full overflow-clip">
+    <SectionReveal>
+    <div id="experience" className="container relative w-full overflow-clip py-20 md:py-32">
       <div className="py-4">
-        <h1 className="font-bold text-2xl md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
+        <h1 className="font-heading font-bold text-2xl md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
           Work Experience
         </h1>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm max-w-sm">
@@ -72,7 +74,7 @@ export function Experience({ data }: ExperienceProps) {
         </p>
       </div>
       <WorkExperience data={data} />
-      {/* <Timeline data={data} /> */}
     </div>
+    </SectionReveal>
   );
 }

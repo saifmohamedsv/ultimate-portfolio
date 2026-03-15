@@ -2,6 +2,8 @@
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import type { ResumeData } from "@/lib/resume-data";
 import { Icon } from "@/components/ui/icon";
+import { SectionReveal } from "@/components/ui/section-reveal";
+import { IconMail, IconPhone } from "@tabler/icons-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -20,9 +22,9 @@ export default function ContactSection({ data }: ContactSectionProps) {
 
   const content = (
     <div className="relative z-20 flex flex-col items-center justify-center text-center px-4">
-      <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white font-sans tracking-tight mb-6">
+      <h2 className="font-heading text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-6">
         <span className="bg-linear-to-r from-purple-500 via-violet-500 to-pink-500 bg-clip-text text-transparent">
-          Let&apos;s Connect ⚡
+          Let&apos;s Connect
         </span>
       </h2>
 
@@ -55,8 +57,8 @@ export default function ContactSection({ data }: ContactSectionProps) {
       </div>
 
       <div className="text-neutral-700 dark:text-neutral-300 text-sm space-y-1">
-        <p>
-          📧{" "}
+        <p className="flex items-center justify-center gap-1.5">
+          <IconMail className="w-4 h-4 text-primary" />
           <a
             href={`mailto:${contact.email}`}
             className="underline underline-offset-2 hover:text-purple-500 transition-colors"
@@ -64,8 +66,8 @@ export default function ContactSection({ data }: ContactSectionProps) {
             {contact.email}
           </a>
         </p>
-        <p>
-          📞{" "}
+        <p className="flex items-center justify-center gap-1.5">
+          <IconPhone className="w-4 h-4 text-primary" />
           <a
             href={`tel:${contact.tel}`}
             className="underline underline-offset-2 hover:text-purple-500 transition-colors"
@@ -81,9 +83,10 @@ export default function ContactSection({ data }: ContactSectionProps) {
   );
 
   return (
+    <SectionReveal>
     <section
       id="contact"
-      className="relative flex items-stretch justify-stretch"
+      className="relative flex items-stretch justify-stretch py-20 md:py-32"
     >
       {hasMounted ? (
         <BackgroundBeamsWithCollision className="h-[50vh] py-24">
@@ -93,5 +96,6 @@ export default function ContactSection({ data }: ContactSectionProps) {
         <div className="h-[50vh] py-24">{content}</div>
       )}
     </section>
+    </SectionReveal>
   );
 }

@@ -1,6 +1,7 @@
 import { getResumeData } from "@/lib/resume-data";
 import { ButtonConnect } from "@/components/shared/button-connect";
 import { Icon } from "@/components/ui/icon";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -34,6 +35,7 @@ export default async function ProjectsPage() {
           </p>
         </header>
 
+        <SectionReveal>
         <div className="mt-10 md:mt-12 grid gap-6 md:gap-8 lg:gap-10 md:grid-cols-2">
           {projects.map((project) => {
             const repoLink =
@@ -47,7 +49,7 @@ export default async function ProjectsPage() {
             return (
               <article
                 key={project.title}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-neutral-200/70 dark:border-neutral-800 bg-gradient-to-b from-white/95 via-white/90 to-neutral-50/90 dark:from-neutral-950 dark:via-neutral-950/95 dark:to-black/90 shadow-[0_24px_80px_rgba(15,23,42,0.25)]"
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-neutral-200/70 dark:border-neutral-800 bg-gradient-to-b from-white/95 via-white/90 to-neutral-50/90 dark:from-neutral-950 dark:via-neutral-950/95 dark:to-black/90 shadow-[0_24px_80px_rgba(15,23,42,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(15,23,42,0.3)]"
               >
                 <div className="relative h-56 overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.25),transparent_60%)] pointer-events-none" />
@@ -150,6 +152,7 @@ export default async function ProjectsPage() {
             );
           })}
         </div>
+        </SectionReveal>
 
         <div className="mt-10 flex justify-center">
           <ButtonConnect href="/">Back to home</ButtonConnect>

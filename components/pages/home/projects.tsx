@@ -1,7 +1,11 @@
+"use client";
+
 import type { ResumeData } from "@/lib/resume-data";
 import { ButtonConnect } from "@/components/shared/button-connect";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Icon } from "@/components/ui/icon";
+import { SectionReveal } from "@/components/ui/section-reveal";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,14 +17,15 @@ export function ProjectsPreview({ data }: ProjectsPreviewProps) {
   const projects = data.projects.slice(0, 3);
 
   return (
+    <SectionReveal>
     <section
       id="projects"
-      className="container w-full py-16 md:py-24 flex flex-col gap-10"
+      className="container w-full py-20 md:py-32 flex flex-col gap-10"
     >
       <div className="max-w-3xl space-y-3">
         <TextGenerateEffect
           words="Highlighted Projects"
-          textClassName="text-2xl md:text-4xl font-semibold text-black dark:text-white"
+          textClassName="font-heading text-2xl md:text-4xl font-semibold text-black dark:text-white"
         />
         <p className="text-sm md:text-base text-neutral-700 dark:text-neutral-300 max-w-xl">
           A selection of projects where I&apos;ve focused on building real
@@ -29,7 +34,7 @@ export function ProjectsPreview({ data }: ProjectsPreviewProps) {
       </div>
 
       <div className="grid gap-6 md:gap-8 md:grid-cols-3">
-        {projects.map((project) => {
+        {projects.map((project, index) => {
           const repoLink =
             project.links?.find((link) =>
               link.type.toLowerCase().includes("source")
@@ -39,9 +44,14 @@ export function ProjectsPreview({ data }: ProjectsPreviewProps) {
             );
 
           return (
-            <article
+            <motion.article
               key={project.title}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-neutral-200/70 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -4, boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)" }}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-neutral-200/70 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm transition-shadow"
             >
               <div className="relative h-44 overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.18),transparent_60%)] opacity-80 pointer-events-none" />
@@ -135,7 +145,7 @@ export function ProjectsPreview({ data }: ProjectsPreviewProps) {
                   )}
                 </div>
               </div>
-            </article>
+            </motion.article>
           );
         })}
       </div>
@@ -144,5 +154,6 @@ export function ProjectsPreview({ data }: ProjectsPreviewProps) {
         <ButtonConnect href="/projects">See all projects</ButtonConnect>
       </div>
     </section>
+    </SectionReveal>
   );
 }

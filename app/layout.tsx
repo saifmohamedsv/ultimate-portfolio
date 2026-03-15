@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Inter as FontSans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { getResumeData } from "@/lib/resume-data";
 import { cn } from "@/lib/utils";
 import { Dock } from "@/components/dock";
 import { Navigation } from "@/components/navbar";
 import { ThemeInit } from "@/components/theme-init";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+});
+
+const fontHeading = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
 });
 
 export const dynamic = "force-dynamic";
@@ -83,15 +89,31 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=JSON.parse(localStorage.getItem("theme-storage"));if(t&&t.state&&t.state.theme==="dark"){document.documentElement.classList.add("dark")}else if(t&&t.state&&t.state.theme==="light"){document.documentElement.classList.remove("dark")}else if(window.matchMedia("(prefers-color-scheme:dark)").matches){document.documentElement.classList.add("dark")}}catch(e){if(window.matchMedia("(prefers-color-scheme:dark)").matches){document.documentElement.classList.add("dark")}}})()`,
+          }}
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased mx-auto px-6",
-          fontSans.variable
+          fontSans.variable,
+          fontHeading.variable
         )}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white focus:outline-none"
+        >
+          Skip to content
+        </a>
         <ThemeInit />
         <Navigation data={data} />
-        {children}
+        <SmoothScrollProvider>
+          <main id="main-content">{children}</main>
+        </SmoothScrollProvider>
         <Dock data={data} />
       </body>
     </html>

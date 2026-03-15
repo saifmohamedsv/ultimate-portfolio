@@ -48,6 +48,7 @@ interface MobileNavMenuProps {
   className?: string;
   isOpen: boolean;
   onClose: () => void;
+  id?: string;
 }
 
 export const Navbar = ({ children, className }: NavbarProps) => {
@@ -196,11 +197,14 @@ export const MobileNavMenu = ({
   className,
   isOpen,
   onClose,
+  id,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          id={id}
+          role="menu"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -219,14 +223,19 @@ export const MobileNavMenu = ({
 export const MobileNavToggle = ({
   isOpen,
   onClick,
+  ...rest
 }: {
   isOpen: boolean;
   onClick: () => void;
-}) => {
-  return isOpen ? (
-    <IconX className="text-black dark:text-white" onClick={onClick} />
-  ) : (
-    <IconMenu2 className="text-black dark:text-white" onClick={onClick} />
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+  return (
+    <button onClick={onClick} className="p-1" {...rest}>
+      {isOpen ? (
+        <IconX className="text-black dark:text-white" />
+      ) : (
+        <IconMenu2 className="text-black dark:text-white" />
+      )}
+    </button>
   );
 };
 

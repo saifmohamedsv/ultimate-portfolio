@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import React, { useRef, useState, useEffect } from "react";
 
 const deterministicRandom = (seed: number) => {
@@ -17,6 +17,7 @@ export const BackgroundBeamsWithCollision = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(parentRef, { once: false, margin: "200px" });
 
   const beams = [
     {
@@ -80,7 +81,7 @@ export const BackgroundBeamsWithCollision = ({
         className
       )}
     >
-      {beams.map((beam) => (
+      {isInView && beams.map((beam) => (
         <CollisionMechanism
           key={beam.initialX + "beam-idx"}
           beamOptions={beam}

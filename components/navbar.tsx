@@ -64,10 +64,14 @@ export function Navigation({ data }: NavigationProps) {
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-nav-menu"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             />
           </MobileNavHeader>
 
           <MobileNavMenu
+            id="mobile-nav-menu"
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
           >

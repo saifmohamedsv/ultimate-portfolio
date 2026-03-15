@@ -78,7 +78,7 @@ export function Hero({ data }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 dark:text-white"
+            className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 dark:text-white"
           >
             {data.name}
           </motion.h1>

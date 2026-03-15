@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import type { ResumeData } from "@/lib/resume-data";
 import { IconCheck } from "@tabler/icons-react";
@@ -22,14 +22,16 @@ export default function WorkExperience({ data }: WorkExperienceProps) {
     <section className="w-full max-w-3xl mx-auto py-4 md:py-12 grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12">
       {/* LEFT TABS */}
       <div
+        role="tablist"
+        aria-label="Work experience"
         className={`
           no-scrollbar
-    flex md:flex-col 
-    space-x-2 md:space-x-0 
-    space-y-0 md:space-y-2 
-    overflow-x-auto md:overflow-visible 
-    border-l-0 md:border-l border-primary/20 
-    ps-0 md:ps-4 
+    flex md:flex-col
+    space-x-2 md:space-x-0
+    space-y-0 md:space-y-2
+    overflow-x-auto md:overflow-visible
+    border-l-0 md:border-l border-primary/20
+    ps-0 md:ps-4
     no-scrollbar
   `}
       >
@@ -39,10 +41,13 @@ export default function WorkExperience({ data }: WorkExperienceProps) {
           return (
             <button
               key={job.company}
+              role="tab"
+              aria-selected={isActive}
+              aria-controls={`tabpanel-${job.company}`}
               onClick={() => setActive(job.company)}
               className={`
         flex items-center gap-2 p-2 rounded-lg transition-all text-start
-        min-w-[100px] md:min-w-[130px] 
+        min-w-[100px] md:min-w-[130px]
         ${
           isActive
             ? "bg-primary/90 text-white shadow-primary/10 shadow-lg"
@@ -70,6 +75,9 @@ export default function WorkExperience({ data }: WorkExperienceProps) {
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
+          role="tabpanel"
+          id={`tabpanel-${active}`}
+          aria-label={`${current.company} details`}
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
