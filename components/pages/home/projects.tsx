@@ -87,9 +87,19 @@ export function ProjectsPreview({ data }: ProjectsPreviewProps) {
               <div className="flex flex-1 flex-col gap-3 px-4 pb-4 pt-3 md:px-5 md:pb-5 md:pt-4">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <h3 className="text-base md:text-lg font-semibold text-neutral-900 dark:text-white group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h3>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-base md:text-lg font-semibold text-neutral-900 dark:text-white group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      {project.slug && project.caseStudy && (
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className="shrink-0 rounded-full border border-primary/60 bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary hover:bg-primary/20"
+                        >
+                          Case study
+                        </Link>
+                      )}
+                    </div>
                     <div className="mt-1 flex flex-wrap items-center gap-2">
                       {project.links?.length ? (
                         <div className="mt-2 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm text-neutral-700 dark:text-neutral-300">

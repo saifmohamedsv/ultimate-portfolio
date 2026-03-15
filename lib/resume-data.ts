@@ -63,6 +63,14 @@ interface RawResumeData {
     }>;
     image: string;
     video: string;
+    slug?: string;
+    caseStudy?: {
+      heroImage: string;
+      problem: string;
+      solution: string;
+      outcome: string;
+      techDetails: string[];
+    };
   }>;
   testimonials: Array<{
     quote: string;

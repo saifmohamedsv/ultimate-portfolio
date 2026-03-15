@@ -30,8 +30,12 @@ export function Navigation({ data }: NavigationProps) {
       link: "#experience",
     },
     {
-      name: "Testimonials",
-      link: "#testimonials",
+      name: "Blog",
+      link: "/blog",
+    },
+    {
+      name: "About",
+      link: "/about",
     },
     {
       name: "Contact",

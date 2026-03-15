@@ -86,6 +86,14 @@ export default async function ProjectsPage() {
                       <h2 className="text-lg md:text-xl font-semibold text-neutral-900 dark:text-white">
                         {project.title}
                       </h2>
+                      {project.slug && project.caseStudy && (
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className="shrink-0 rounded-full border border-primary/60 bg-primary/10 px-3 py-1 text-[11px] font-medium text-primary hover:bg-primary/20"
+                        >
+                          Case study
+                        </Link>
+                      )}
                       {project.href && (
                         <Link
                           href={project.href}

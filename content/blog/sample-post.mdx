@@ -1,0 +1,57 @@
+---
+title: "Building a Modern Portfolio with Next.js and MongoDB"
+description: "How I built this portfolio site using Next.js 16, React 19, MongoDB, and Framer Motion — from architecture decisions to deployment."
+date: "2026-03-10"
+tags: ["Next.js", "React", "MongoDB", "Portfolio"]
+image: "/me.png"
+published: true
+---
+
+# Building a Modern Portfolio with Next.js and MongoDB
+
+When I set out to rebuild my portfolio, I wanted something that went beyond a static page. I needed a site that was **fast**, **dynamic**, and easy to update without redeploying.
+
+## The Stack
+
+Here's what powers this site:
+
+- **Next.js 16** — App Router with React Server Components
+- **MongoDB** — Dynamic content management
+- **Tailwind CSS 4** — Utility-first styling
+- **Framer Motion** — Smooth animations and transitions
+
+## Why MongoDB?
+
+Instead of hardcoding content in JSON files, I store everything in MongoDB. This means I can update my resume, projects, and testimonials through a database — no code changes required.
+
+```typescript
+export async function getResumeData() {
+  const client = await clientPromise;
+  const db = client.db("resume");
+  const data = await db.collection("data").findOne({});
+  return data;
+}
+```
+
+## Animation Philosophy
+
+Every section uses scroll-triggered reveals with `motion` from Framer Motion. The key is subtlety — animations should enhance the experience, not distract from the content.
+
+```tsx
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+>
+  {children}
+</motion.div>
+```
+
+## Key Takeaways
+
+1. **Server Components first** — fetch data on the server, keep client bundles lean
+2. **Progressive enhancement** — the site works without JavaScript
+3. **Design tokens** — consistent spacing, colors, and typography through CSS variables
+
+The result is a portfolio that loads fast, looks polished, and is trivial to maintain. If you're building your own, I hope this gives you some ideas to start with.

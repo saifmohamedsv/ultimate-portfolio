@@ -166,3 +166,31 @@ html.lenis body {
     }
   }
 }
+
+/* Article prose styles */
+.article-prose pre {
+  @apply my-6 overflow-x-auto rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-950 p-4 text-sm;
+}
+
+.article-prose pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.article-prose code[data-theme] {
+  @apply bg-transparent;
+}
+
+.article-prose [data-rehype-pretty-code-figure] pre {
+  @apply border border-neutral-200 dark:border-neutral-800;
+}
+
+.article-prose [data-rehype-pretty-code-figure] code {
+  @apply text-sm;
+  counter-reset: line;
+}
+
+.article-prose [data-rehype-pretty-code-figure] code > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply mr-4 inline-block w-4 text-right text-neutral-500;
+}
