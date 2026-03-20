@@ -218,13 +218,13 @@ export const MobileNavToggle = ({
   );
 };
 
-export const NavbarLogo = () => {
+export const NavbarLogo = ({ initials, siteName }: { initials?: string; siteName?: string }) => {
   return (
     <Link
       href="/"
       className="relative z-20 mr-4 flex flex-shrink-0 items-center text-sm font-normal text-foreground bg-transparent"
     >
-      <Logo className="text-base" />
+      <Logo className="text-base" initials={initials} siteName={siteName} />
     </Link>
   );
 };

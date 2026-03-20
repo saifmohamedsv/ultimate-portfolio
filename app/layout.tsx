@@ -106,6 +106,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const data = await getResumeData();
+  const siteName = process.env.SITE_NAME || data.name;
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -130,7 +131,7 @@ export default async function RootLayout({
           Skip to content
         </a>
         <ThemeInit />
-        <Navigation data={data} />
+        <Navigation data={data} siteName={siteName} />
         <SmoothScrollProvider>
           <main id="main-content">{children}</main>
         </SmoothScrollProvider>
